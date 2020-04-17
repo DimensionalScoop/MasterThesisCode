@@ -1,0 +1,68 @@
+# this file describes all file paths and basic configuration that all script use,
+# i.e. files that are read and written, number of cpu_cores to use, etc.
+# the Makefile uses the paths from this file.
+
+# absolute paths are valid only on cobalt
+# relative paths are relative to the root dir of this repo (where this config should live)
+cobalt:
+  machine:
+    # number of cores `01-extractor.py` should use to do the extraction
+    cpu_cores_for_MC_extraction: 28
+  data:
+    # original MC files on cobalt
+    tau_files: /data/ana/Cscd/StartingEvents/NuGen_new/NuTau/medium_energy/IC86_flasher_p1=0.3_p2=0.0/l2/*/*.zst
+    # deprecated gcd file, only keept for documentation purposes
+    old_gcd_file: /data/sim/IceCube/2012/filtered/level2/neutrino-generator/11065/01000-01999/GeoCalibDetectorStatus_2012.56063_V1.i3.gz
+    # current gcd file describing detector geometrie, etc. used in the MC simulation for `tau_files`
+    gcd_file: /data/sim/sim-new/downloads/GCD/GeoCalibDetectorStatus_2013.56429_V1.i3.gz
+    # number of files that `01-extractor.py` reads from `tau_files`
+    count_files_to_process: 500
+
+    # used on remote server with a network shared home; this path is a local path with fast read/write
+    scratch: /scratch/mpernklau/data/cobra/
+
+
+  # intermediated storage for files during preprocessing
+  retabled: data/02-iterim/
+  # single file that contains all data in the hdf 'table' format (for faster read speeds, appending)
+  retabled_single: data/02-iterim/retabled.hdf
+  renumbered: data/02-iterim/renumered/
+  # all events after `03-feature-engineering.py`
+  preprocessed: data/02-iterim/preprocessed.hdf
+
+  pre_learning_cache: data/02-iterim/05_pre_learning_cache/
+  
+  
+  single_cleaned_lv1: data/02-iterim/single_low_loss_lv1.hdf
+  preprocessed_events: data/03-preprocessed/all_events.hdf
+ # preprocessed_events_sparse: data/03-preprocessed/all_events_p2.hdf
+
+  # all pandas dfs are saved under this key in hdf files 
+  hdf_key: frame
+  
+  # saves number of bins, edges, with, etc. so code after binning knows about the configuration
+  binning_config: data/02-iterim/binning_configuration.yaml
+
+  sparse_dataset_interim: data/02-iterim/
+
+MC:
+  filename: data/00-toy/01-toy-MC.hdf 
+
+data:
+  raw: data/01-raw/*.hdf
+  main: data/02-interim/main.hdf
+
+analysis:
+  stability_test_pickle_dir: data/00-toy/stability-test/
+
+machine:
+  
+  # number of cores all other scripts should use
+  cpu_cores: 12
+
+
+
+models:
+  AE_single_full: models/compiled/AE_superclean_single.hdf
+  AE_single_encoder: models/compiled/encoder_superclean_single.hdf
+
