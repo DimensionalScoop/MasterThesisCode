@@ -3,7 +3,7 @@
 
 # icae/notebooks/03-feature-engineering.py: 10
 # icae/tools/config_loader.py: 1
-PyYAML == 5.1.2
+PyYAML == 5.4
 
 # icae/tools/dataset_sparse.py: 16
 box-py == 1.2.8
