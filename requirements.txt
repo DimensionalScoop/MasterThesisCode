@@ -15,7 +15,7 @@ configspace == 0.4.11
 # icae/notebooks/02a-single-waveform.py: 25
 # icae/tools/feature_gen.py: 15,16,56
 # icae/tools/on_the_fly_loader.py: 2
-dask == 2.8.1
+dask == 2021.10.0
 
 # icae/toy/train_fastai.py: 9,10
 # icae/toy/train_fastai_analysis.py: 9,10
