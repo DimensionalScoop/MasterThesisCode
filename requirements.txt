@@ -26,7 +26,7 @@ fastai == 1.0.59
 # icae/scripts/to_hdf_table.py: 28
 # icae/tools/on_the_fly_loader.py: 9
 # icae/tools/performance.py: 3
-joblib == 0.14.0
+joblib == 1.2.0
 
 # icae/models/waveform/simple_keras.py: 61
 # icae/tools/EMD.py: 5
